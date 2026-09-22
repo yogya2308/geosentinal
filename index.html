@@ -24,13 +24,13 @@
       window.addEventListener('error', function (event) {
         var root = document.getElementById('root');
         if (root && !root.innerHTML.trim()) {
-          root.innerHTML = '<main style="min-height:100vh;background:#090f1f;color:#f8fafc;font:16px system-ui;padding:32px"><h1>GeoSentinel could not start</h1><p>Reload the page or open the latest deployment URL.</p></main>';
+          root.innerHTML = '<main style="min-height:100vh;background:#090f1f;color:#f8fafc;font:16px system-ui;padding:32px"><h1>GeoSentinel could not start</h1><p>' + (event.message || 'Reload the page or open the latest deployment URL.') + '</p></main>';
         }
       });
       window.addEventListener('unhandledrejection', function (event) {
         var root = document.getElementById('root');
         if (root && !root.innerHTML.trim()) {
-          root.innerHTML = '<main style="min-height:100vh;background:#090f1f;color:#f8fafc;font:16px system-ui;padding:32px"><h1>GeoSentinel could not start</h1><p>Reload the page or open the latest deployment URL.</p></main>';
+          root.innerHTML = '<main style="min-height:100vh;background:#090f1f;color:#f8fafc;font:16px system-ui;padding:32px"><h1>GeoSentinel could not start</h1><p>' + (event.reason?.message || String(event.reason) || 'Reload the page or open the latest deployment URL.') + '</p></main>';
         }
       });
     </script>
