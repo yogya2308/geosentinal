@@ -58,10 +58,10 @@ export default function App() {
   const [themeMode, setThemeMode] = useState('dark');
   const [currentUser, setCurrentUser] = useState({
     id: 'USR-MASTER-ADMIN-01',
-    name: 'Aman Kumar (Master Admin)',
+    name: 'Yogya 2308 (Master Admin)',
     role: 'admin',
     accessLevel: 'master-admin',
-    email: 'amankumar@gmail.com'
+    email: 'yj23082007@gmail.com'
   });
 
   function handleLogout() {

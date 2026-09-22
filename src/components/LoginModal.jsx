@@ -1,6 +1,8 @@
 ﻿import React, { useState } from 'react';
 import { ShieldCheck, Mail, Lock, Eye, EyeOff, User, HardHat, Sparkles, CheckCircle2, AlertTriangle, ArrowRight } from 'lucide-react';
 
+const MASTER_ADMIN_EMAIL = 'yj23082007@gmail.com';
+
 export default function LoginModal({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,14 +19,14 @@ export default function LoginModal({ onLoginSuccess }) {
     return gmailRegex.test(trimmed);
   }
 
-  function handleDirectGoogleSignIn(googleEmail = 'amankumar@gmail.com') {
+  function handleDirectGoogleSignIn(googleEmail = MASTER_ADMIN_EMAIL) {
     setIsProcessing(true);
     setErrorMsg('');
 
     setTimeout(() => {
-      const isOwner = googleEmail.toLowerCase().includes('aman') || selectedRole === 'admin';
+      const isOwner = googleEmail.trim().toLowerCase() === MASTER_ADMIN_EMAIL || selectedRole === 'admin';
       const role = isOwner ? 'admin' : 'inspector';
-      const displayName = isOwner ? 'Aman Kumar (Master Admin)' : googleEmail.split('@')[0];
+      const displayName = isOwner ? 'Yogya 2308 (Master Admin)' : googleEmail.split('@')[0];
 
       const userObj = {
         id: `USR-${Date.now().toString().slice(-5)}`,
@@ -72,10 +74,10 @@ export default function LoginModal({ onLoginSuccess }) {
     setIsProcessing(true);
 
     setTimeout(() => {
-      // Auto-detect Aman Kumar as admin or if selected role is admin
-      const isOwner = selectedRole === 'admin' || trimmedEmail.includes('aman') || trimmedEmail.includes('admin');
+      // Grant Master Admin access only to the configured account or explicit admin demo mode.
+      const isOwner = trimmedEmail === MASTER_ADMIN_EMAIL || selectedRole === 'admin';
       const role = isOwner ? 'admin' : 'inspector';
-      const displayName = isOwner ? 'Aman Kumar (Master Admin)' : trimmedEmail.split('@')[0];
+      const displayName = isOwner ? 'Yogya 2308 (Master Admin)' : trimmedEmail.split('@')[0];
 
       const userObj = {
         id: `USR-${Date.now().toString().slice(-5)}`,
@@ -210,7 +212,7 @@ export default function LoginModal({ onLoginSuccess }) {
                 type="button"
                 onClick={() => {
                   setSelectedRole('admin');
-                  if (!email) setEmail('amankumar@gmail.com');
+                  if (!email) setEmail(MASTER_ADMIN_EMAIL);
                 }}
                 className={`py-2 px-2 text-center rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1 ${
                   selectedRole === 'admin'
@@ -218,7 +220,7 @@ export default function LoginModal({ onLoginSuccess }) {
                     : 'text-amber-400/80 hover:text-amber-300'
                 }`}
               >
-                <span>👑 Owner (Aman)</span>
+                <span>👑 Master Admin (Yogya 2308)</span>
               </button>
             </div>
             <p className="text-[10px] font-mono text-slate-400 mt-1">
