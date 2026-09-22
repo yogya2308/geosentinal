@@ -20,7 +20,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      window.addEventListener('error', function (event) {
+        var root = document.getElementById('root');
+        if (root && !root.innerHTML.trim()) {
+          root.innerHTML = '<main style="min-height:100vh;background:#090f1f;color:#f8fafc;font:16px system-ui;padding:32px"><h1>GeoSentinel could not start</h1><p>Reload the page or open the latest deployment URL.</p></main>';
+        }
+      });
+      window.addEventListener('unhandledrejection', function (event) {
+        var root = document.getElementById('root');
+        if (root && !root.innerHTML.trim()) {
+          root.innerHTML = '<main style="min-height:100vh;background:#090f1f;color:#f8fafc;font:16px system-ui;padding:32px"><h1>GeoSentinel could not start</h1><p>Reload the page or open the latest deployment URL.</p></main>';
+        }
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-
