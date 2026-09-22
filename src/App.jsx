@@ -84,6 +84,7 @@ export default function App() {
   const [thresholds, setThresholds] = useState({ ...DGMS_THRESHOLDS });
   const [serialConnected, setSerialConnected] = useState(false);
   const [serialToast, setSerialToast] = useState(null);
+  const manualSirenRef = useRef(false);
 
   useEffect(() => {
     if (serialToast) {
@@ -366,14 +367,14 @@ export default function App() {
   // Automated siren trigger: starts on critical, and AUTOMATICALLY stops as soon as normal/advisory
   useEffect(() => {
     if (overallStatus === 'critical') {
-      if (!isSirenActive) {
+      if (!isSirenActive && !manualSirenRef.current) {
         sirenEngine.startSiren();
         setIsSirenActive(true);
         logEvent('critical', 'NODE-01', 'CRITICAL STRATA RUPTURE DETECTED - AUTOMATED EVACUATION ENGAGED');
       }
     } else {
       // Auto-silence whenever readings return to safe/advisory
-      if (isSirenActive) {
+      if (isSirenActive && !manualSirenRef.current) {
         sirenEngine.stopSiren();
         setIsSirenActive(false);
         logEvent('normal', 'SYS', 'Working strata stabilized - Emergency siren silenced automatically.');
@@ -425,10 +426,12 @@ export default function App() {
   // Siren toggle handler
   function handleToggleSiren() {
     if (isSirenActive) {
+      manualSirenRef.current = false;
       sirenEngine.stopSiren();
       setIsSirenActive(false);
       logEvent('normal', 'OPERATOR', 'Emergency siren manually silenced by safety operator.');
     } else {
+      manualSirenRef.current = true;
       sirenEngine.startSiren();
       setIsSirenActive(true);
       logEvent('critical', 'OPERATOR', 'Manual acoustic siren test activated from command console.');
