@@ -22,7 +22,7 @@ export default function UserAccessLogSection({ currentUser }) {
           {
             id: 'USR-89412',
             email: 'yj23082007@gmail.com',
-            name: 'Yogya 2308 (Master Admin)',
+            name: 'Yogya Jain (Master Admin)',
             role: 'admin',
             loginMethod: 'Google 1-Click Sign-In',
             loginTime: new Date().toLocaleString('en-IN', {
@@ -143,7 +143,7 @@ export default function UserAccessLogSection({ currentUser }) {
             <h2 className="text-2xl font-black text-white tracking-wide flex items-center gap-3">
               <span>VISITOR & USER LOGIN AUDIT LEDGER</span>
               <span className="text-xs bg-amber-950 text-amber-300 border border-amber-500/60 px-3 py-1 rounded-full font-mono font-black">
-                👑 MASTER ADMIN: YOGYA 2308
+                👑 MASTER ADMIN: YOGYA JAIN
               </span>
             </h2>
             <p className="text-sm font-semibold text-slate-200">

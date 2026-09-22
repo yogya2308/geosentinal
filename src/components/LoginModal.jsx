@@ -26,7 +26,7 @@ export default function LoginModal({ onLoginSuccess }) {
     setTimeout(() => {
       const isOwner = googleEmail.trim().toLowerCase() === MASTER_ADMIN_EMAIL || selectedRole === 'admin';
       const role = isOwner ? 'admin' : 'inspector';
-      const displayName = isOwner ? 'Yogya 2308 (Master Admin)' : googleEmail.split('@')[0];
+      const displayName = isOwner ? 'Yogya Jain (Master Admin)' : googleEmail.split('@')[0];
 
       const userObj = {
         id: `USR-${Date.now().toString().slice(-5)}`,
@@ -77,7 +77,7 @@ export default function LoginModal({ onLoginSuccess }) {
       // Grant Master Admin access only to the configured account or explicit admin demo mode.
       const isOwner = trimmedEmail === MASTER_ADMIN_EMAIL || selectedRole === 'admin';
       const role = isOwner ? 'admin' : 'inspector';
-      const displayName = isOwner ? 'Yogya 2308 (Master Admin)' : trimmedEmail.split('@')[0];
+      const displayName = isOwner ? 'Yogya Jain (Master Admin)' : trimmedEmail.split('@')[0];
 
       const userObj = {
         id: `USR-${Date.now().toString().slice(-5)}`,
