@@ -24,13 +24,14 @@ export default function LoginModal({ onLoginSuccess }) {
     setTimeout(() => {
       const isOwner = googleEmail.toLowerCase().includes('aman') || selectedRole === 'admin';
       const role = isOwner ? 'admin' : 'inspector';
-      const displayName = isOwner ? 'Aman Kumar (Owner)' : googleEmail.split('@')[0];
+      const displayName = isOwner ? 'Aman Kumar (Master Admin)' : googleEmail.split('@')[0];
 
       const userObj = {
         id: `USR-${Date.now().toString().slice(-5)}`,
         email: googleEmail,
         name: displayName,
         role: role,
+        accessLevel: isOwner ? 'master-admin' : 'inspector',
         loginMethod: 'Google 1-Click Sign-In',
         loginTime: new Date().toLocaleString('en-IN', {
           timeZone: 'Asia/Kolkata',
@@ -74,13 +75,14 @@ export default function LoginModal({ onLoginSuccess }) {
       // Auto-detect Aman Kumar as admin or if selected role is admin
       const isOwner = selectedRole === 'admin' || trimmedEmail.includes('aman') || trimmedEmail.includes('admin');
       const role = isOwner ? 'admin' : 'inspector';
-      const displayName = isOwner ? 'Aman Kumar (Owner)' : trimmedEmail.split('@')[0];
+      const displayName = isOwner ? 'Aman Kumar (Master Admin)' : trimmedEmail.split('@')[0];
 
       const userObj = {
         id: `USR-${Date.now().toString().slice(-5)}`,
         email: trimmedEmail,
         name: displayName,
         role: role,
+        accessLevel: isOwner ? 'master-admin' : 'inspector',
         loginMethod: 'Gmail & Password',
         loginTime: new Date().toLocaleString('en-IN', {
           timeZone: 'Asia/Kolkata',

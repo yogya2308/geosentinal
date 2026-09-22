@@ -368,11 +368,11 @@ export default function Header({
               <div className="text-xs font-bold text-white flex items-center gap-1.5 font-mono">
                 <span>Aman Kumar</span>
                 <span className="text-[10px] bg-amber-950 text-amber-300 border border-amber-500/60 px-1.5 py-0.2 rounded font-black">
-                  👑 OWNER
+                  👑 MASTER ADMIN
                 </span>
               </div>
               <div className="text-[10px] text-emerald-400 font-mono font-bold">
-                Chief Safety Officer (All Sections Active)
+                Master Admin • All Sections Active
               </div>
             </div>
           </div>

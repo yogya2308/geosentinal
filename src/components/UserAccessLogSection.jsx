@@ -143,7 +143,7 @@ export default function UserAccessLogSection({ currentUser }) {
             <h2 className="text-2xl font-black text-white tracking-wide flex items-center gap-3">
               <span>VISITOR & USER LOGIN AUDIT LEDGER</span>
               <span className="text-xs bg-amber-950 text-amber-300 border border-amber-500/60 px-3 py-1 rounded-full font-mono font-black">
-                👑 OWNER EXCLUSIVE: AMAN KUMAR
+                👑 MASTER ADMIN: AMAN KUMAR
               </span>
             </h2>
             <p className="text-sm font-semibold text-slate-200">

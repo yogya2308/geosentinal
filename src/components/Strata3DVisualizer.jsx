@@ -112,7 +112,7 @@ export default function Strata3DVisualizer({ maxTilt, maxCrack }) {
           const distFromCenter3 = Math.sqrt(nx * nx + ny * ny) / (w * 0.8);
           const drop3 = Math.max(0, (1 - distFromCenter3 * distFromCenter3) * subsidenceDepth);
 
-          const distFromCenter4 = Math.sqrt(ix * nx + ny * ny) / (w * 0.8);
+          const distFromCenter4 = Math.sqrt(ix * ix + ny * ny) / (w * 0.8);
           const drop4 = Math.max(0, (1 - distFromCenter4 * distFromCenter4) * subsidenceDepth);
 
           const pt1 = project(ix, iy, surfaceZ - drop1);
