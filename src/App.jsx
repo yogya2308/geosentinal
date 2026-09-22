@@ -350,7 +350,7 @@ export default function App() {
     maxTilt >= DGMS_THRESHOLDS.TILT_CRITICAL || 
     maxCrack >= DGMS_THRESHOLDS.CRACK_CRITICAL || 
     maxVibration >= DGMS_THRESHOLDS.VIBRATION_CRITICAL ||
-    (hardwareMode !== 'hardware' && (
+    (!serialConnected && (
       maxCH4 >= DGMS_THRESHOLDS.CH4_POWER_TRIP || 
       maxCO >= DGMS_THRESHOLDS.CO_CRITICAL ||
       maxMoisture >= DGMS_THRESHOLDS.MOISTURE_CRITICAL ||
